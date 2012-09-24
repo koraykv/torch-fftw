@@ -6,7 +6,13 @@ FFTW interface for Torch7
 Installation
 ============
 
-Install Torch7, then use torch-pkg deploy
+Install Torch7,
+
+clone this repo
+ - git://github.com/koraykv/torch-fftw.git
+
+deploy this repo
+ - torch-pkg deploy
 
 OR
 
