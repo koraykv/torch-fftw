@@ -1,1 +1,2 @@
+require 'torch'
 require 'libfftw'
