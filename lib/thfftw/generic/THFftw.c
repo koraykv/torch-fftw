@@ -41,4 +41,24 @@ void FFTW_(ifft)(real *r, real *x, long n)
 #endif
 }
 
+/* 1-D FFT */
+void FFTW_(fft2)(real *r, real *x, long m, long n)
+{
+#ifdef USE_FFTW
+#if defined(TH_REAL_IS_DOUBLE)
+  fftw_complex *out = (fftw_complex*)r;
+  fftw_plan p = fftw_plan_dft_r2c_2d(m, n, x, out, FFTW_ESTIMATE);
+  fftw_execute(p);
+  fftw_destroy_plan(p);
+#else
+  fftwf_complex *out = (fftwf_complex*)r;
+  fftwf_plan p = fftwf_plan_dft_r2c_2d(m, n, x, out, FFTW_ESTIMATE);
+  fftwf_execute(p);
+  fftwf_destroy_plan(p);
+#endif
+#else
+  THError("fft2 : FFTW Library was not found in compile time\n");
+#endif
+}
+
 #endif

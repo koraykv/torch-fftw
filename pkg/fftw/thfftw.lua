@@ -251,19 +251,27 @@ for _,Tensor in ipairs({"FloatTensor", "DoubleTensor"}) do
    
 
    interface:wrap("fft",
-		  cname("fftdim"),
-		  {{name=Tensor, default=true, returned=true},
-		   {name=Tensor},
-		   {name="long", default=0},
-		   {name="boolean",default=0,invisible=true}}
-	       )
+      cname("fftdim"),
+      {{name=Tensor, default=true, returned=true},
+       {name=Tensor},
+       {name="long", default=0},
+       {name="boolean",default=0,invisible=true}}
+         )
    interface:wrap("ifft",
-		  cname("ifftdim"),
-		  {{name=Tensor, default=true, returned=true},
-		   {name=Tensor},
-		   {name="long", default=0},
-		   {name="boolean",default=0,invisible=true}}
-	       )
+      cname("ifftdim"),
+      {{name=Tensor, default=true, returned=true},
+       {name=Tensor},
+       {name="long", default=0},
+       {name="boolean",default=0,invisible=true}}
+         )
+   interface:wrap("fft2",
+      cname("fft2dim"),
+      {{name=Tensor, default=true, returned=true},
+       {name=Tensor},
+       {name="long", default=0},
+       {name="long", default=0},
+       {name="boolean",default=0,invisible=true}}
+         )
 
    method:register(string.format("m_thfftw_%s__", Tensor))
    interface:print(method:tostring())
